@@ -1,10 +1,11 @@
 services:
-  db:
+  ms-usuarios-db:
     image: postgres:latest
-    container_name: ecommerce-db
+    container_name: ecommerce-ms-usuarios-db
     environment:
-      - POSTGRES_DB=ecommerce
+      - POSTGRES_DB=ecommerce-ms-usuarios
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
-      - "5432:5432"
+      - "5433:5433"
+    command: "-p 5433"
