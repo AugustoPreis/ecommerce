@@ -1,0 +1,9 @@
+node_modules
+package-lock.json
+build
+.env
+.idea
+.vscode
+*.log
+coverage
+__tests__
