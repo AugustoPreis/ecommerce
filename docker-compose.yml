@@ -9,3 +9,13 @@ services:
     ports:
       - "5433:5433"
     command: "-p 5433"
+  ms-produtos-db:
+    image: postgres:latest
+    container_name: ecommerce-ms-produtos-db
+    environment:
+      - POSTGRES_DB=ecommerce-ms-produtos
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5434:5434"
+    command: "-p 5434"
