@@ -1,6 +1,6 @@
 export interface Env {
   port: number;
-  msProdutosPort: number;
+  msProdutosUrl: string;
   jwtSecret: string;
   db: EnvDB;
 }

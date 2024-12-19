@@ -3,7 +3,7 @@ import { Env } from '../types/Env';
 export function getEnv(): Env {
   const {
     PORT,
-    MS_PRODUTOS_PORT,
+    MS_PRODUTOS_URL,
     DB_HOST,
     DB_USER,
     DB_PASS,
@@ -14,7 +14,7 @@ export function getEnv(): Env {
 
   return {
     port: Number(PORT),
-    msProdutosPort: Number(MS_PRODUTOS_PORT),
+    msProdutosUrl: MS_PRODUTOS_URL,
     jwtSecret: JWT_SECRET,
     db: {
       host: DB_HOST,

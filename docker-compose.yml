@@ -81,6 +81,7 @@ services:
     env_file: ./services/carrinhos/.env
     environment:
       - DB_HOST=ms-carrinhos-db
+      - MS_PRODUTOS_URL=http://ms-produtos:3002
     depends_on:
       - ms-carrinhos-db
     networks:

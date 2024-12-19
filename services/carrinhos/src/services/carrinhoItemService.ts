@@ -26,7 +26,7 @@ export class CarrinhoItemService {
 
   async buscarProduto(produtoId: number): Promise<ProdutoBuscaDTO> {
     try {
-      const response = await axios.get(`http://localhost:${app.env.msProdutosPort}/produtos/${produtoId}`);
+      const response = await axios.get(`${app.env.msProdutosUrl}/produtos/${produtoId}`);
 
       return response.data as ProdutoBuscaDTO;
     } catch (err) {
@@ -50,7 +50,7 @@ export class CarrinhoItemService {
     }
 
     try {
-      const response = await axios.get(`http://localhost:${app.env.msProdutosPort}/produtos`, {
+      const response = await axios.get(`${app.env.msProdutosUrl}/produtos`, {
         params: {
           ids: idProdutos.join(','),
         },
