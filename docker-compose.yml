@@ -9,6 +9,8 @@ services:
     ports:
       - "5433:5433"
     command: "-p 5433"
+    volumes:             
+      - ./services/usuarios/src/config:/docker-entrypoint-initdb.d
   ms-produtos-db:
     image: postgres:latest
     container_name: ecommerce-ms-produtos-db
@@ -19,6 +21,8 @@ services:
     ports:
       - "5434:5434"
     command: "-p 5434"
+    volumes:             
+      - ./services/produtos/src/config:/docker-entrypoint-initdb.d
   ms-carrinhos-db:
     image: postgres:latest
     container_name: ecommerce-ms-carrinhos-db
@@ -29,3 +33,5 @@ services:
     ports:
       - "5435:5435"
     command: "-p 5435"
+    volumes:             
+      - ./services/carrinhos/src/config:/docker-entrypoint-initdb.d
