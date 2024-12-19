@@ -1,9 +1,9 @@
-import { Database } from '../config/database';
-import { ProdutoListagemFiltroDTO } from '../dtos/produto/ProdutoListagemFiltroDTO';
-import { Produto } from '../models/Produto';
-import { isValidArray, isValidNumber, isValidString } from 'node-backend-utils/validators';
-import { OrderBy } from '../types/OrderBy';
 import { UUID } from 'crypto';
+import { isValidArray, isValidNumber, isValidString } from 'node-backend-utils/validators';
+import { ProdutoListagemFiltroDTO } from '../dtos/produto/ProdutoListagemFiltroDTO';
+import { Database } from '../config/database';
+import { Produto } from '../models/Produto';
+import { OrderBy } from '../types/OrderBy';
 
 export class ProdutoRepository {
   private readonly repository = Database.getRepository(Produto);

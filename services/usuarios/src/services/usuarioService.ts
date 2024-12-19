@@ -1,19 +1,19 @@
-import { Encrypt } from 'node-backend-utils/utils';
-import { signJWT } from 'node-backend-utils/auth';
+import { isAfter, subYears } from 'date-fns';
 import { isEmail } from 'class-validator';
 import { validateBr } from 'js-brasil';
+import { Encrypt } from 'node-backend-utils/utils';
+import { signJWT } from 'node-backend-utils/auth';
+import { isValidNumber, isValidString } from 'node-backend-utils/validators';
+import { BadRequestError, ConflictError, ForbiddenError, NotFoundError } from 'node-backend-utils/classes';
 import { UsuarioCadastroDTO } from '../dtos/usuario/UsuarioCadastroDTO';
 import { UsuarioLoginResultadoDTO } from '../dtos/usuario/UsuarioLoginResultadoDTO';
-import { usuarioRepository } from '../repositories/usuarioRepository';
 import { UsuarioLogadoDTO } from '../dtos/usuario/UsuarioLogadoDTO';
-import { Usuario } from '../models/Usuario';
-import { BadRequestError, ConflictError, ForbiddenError, NotFoundError } from 'node-backend-utils/classes';
-import { isAfter, subYears } from 'date-fns';
-import { cepApi } from '../apis/cep';
 import { UsuarioLoginDTO } from '../dtos/usuario/UsuarioLoginDTO';
 import { UsuarioBuscaDTO } from '../dtos/usuario/UsuarioBuscaDTO';
-import { isValidNumber, isValidString } from 'node-backend-utils/validators';
 import { UsuarioAtualizacaoDTO } from '../dtos/usuario/UsuarioAtualizacaoDTO';
+import { usuarioRepository } from '../repositories/usuarioRepository';
+import { cepApi } from '../apis/cep';
+import { Usuario } from '../models/Usuario';
 import { app } from '../app';
 
 export class UsuarioService {

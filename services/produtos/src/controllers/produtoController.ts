@@ -1,8 +1,8 @@
+import { UUID } from 'crypto';
 import { NextFunction, Request, Response } from 'express';
 import { HttpStatus } from 'node-backend-utils/enums';
 import { ProdutoListagemFiltroDTO } from '../dtos/produto/ProdutoListagemFiltroDTO';
 import { produtoService } from '../services/produtoService';
-import { UUID } from 'crypto';
 
 export class ProdutoController {
   async listar(req: Request, res: Response, next: NextFunction): Promise<void> {
