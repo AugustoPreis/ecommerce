@@ -19,3 +19,13 @@ services:
     ports:
       - "5434:5434"
     command: "-p 5434"
+  ms-carrinhos-db:
+    image: postgres:latest
+    container_name: ecommerce-ms-carrinhos-db
+    environment:
+      - POSTGRES_DB=ecommerce-ms-carrinhos
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5435:5435"
+    command: "-p 5435"
