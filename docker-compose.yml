@@ -1,4 +1,28 @@
+# Configuração do Docker Compose para subir os serviços da aplicação
+# Leia o README.md para mais informações
+# Serviços configurados:
+# - Usuários
+# - Produtos
+# - Carrinhos
 services:
+
+  # ---------------------------- SERVIÇO DE USUÁRIOS ---------------------------- #
+  # App
+  ms-usuarios:
+    build: ./services/usuarios
+    restart: on-failure
+    container_name: ecommerce-ms-usuarios
+    ports:
+      - 3001:3001
+    env_file: ./services/usuarios/.env
+    environment:
+      - DB_HOST=ms-usuarios-db
+    depends_on:
+      - ms-usuarios-db
+    networks:
+      - ecommerce-network
+
+  # Banco de dados
   ms-usuarios-db:
     image: postgres:latest
     container_name: ecommerce-ms-usuarios-db
@@ -9,8 +33,28 @@ services:
     ports:
       - "5433:5433"
     command: "-p 5433"
-    volumes:             
+    volumes:
       - ./services/usuarios/src/config:/docker-entrypoint-initdb.d
+    networks:
+      - ecommerce-network
+
+  # ---------------------------- SERVIÇO DE PRODUTOS ---------------------------- #
+  # App
+  ms-produtos:
+    build: ./services/produtos
+    restart: on-failure
+    container_name: ecommerce-ms-produtos
+    ports:
+      - 3002:3002
+    env_file: ./services/produtos/.env
+    environment:
+      - DB_HOST=ms-produtos-db
+    depends_on:
+      - ms-produtos-db
+    networks:
+      - ecommerce-network
+
+  # Banco de dados
   ms-produtos-db:
     image: postgres:latest
     container_name: ecommerce-ms-produtos-db
@@ -21,8 +65,28 @@ services:
     ports:
       - "5434:5434"
     command: "-p 5434"
-    volumes:             
+    volumes:
       - ./services/produtos/src/config:/docker-entrypoint-initdb.d
+    networks:
+      - ecommerce-network
+
+  # ---------------------------- SERVIÇO DE CARRINHOS ---------------------------- #
+  # App
+  ms-carrinhos:
+    build: ./services/carrinhos
+    restart: on-failure
+    container_name: ecommerce-ms-carrinhos
+    ports:
+      - 3003:3003
+    env_file: ./services/carrinhos/.env
+    environment:
+      - DB_HOST=ms-carrinhos-db
+    depends_on:
+      - ms-carrinhos-db
+    networks:
+      - ecommerce-network
+
+  # Banco de dados
   ms-carrinhos-db:
     image: postgres:latest
     container_name: ecommerce-ms-carrinhos-db
@@ -33,5 +97,11 @@ services:
     ports:
       - "5435:5435"
     command: "-p 5435"
-    volumes:             
+    volumes:
       - ./services/carrinhos/src/config:/docker-entrypoint-initdb.d
+    networks:
+      - ecommerce-network
+
+networks:
+  ecommerce-network:
+    driver: bridge
