@@ -1,7 +1,7 @@
 import { Database } from '../config/database';
 import { ProdutoListagemFiltroDTO } from '../dtos/produto/ProdutoListagemFiltroDTO';
 import { Produto } from '../models/Produto';
-import { isValidNumber, isValidString } from 'node-backend-utils/validators';
+import { isValidArray, isValidNumber, isValidString } from 'node-backend-utils/validators';
 import { OrderBy } from '../types/OrderBy';
 import { UUID } from 'crypto';
 
@@ -19,7 +19,15 @@ export class ProdutoRepository {
     qb.where('prod.ativo IS TRUE');
 
     //Parâmetros opcionais
-    const { nome, categoriaId, marcaId, valorMin, valorMax, pagina, itensPagina, ordem, ordenarPor } = filtro;
+    const { ids, nome, categoriaId, marcaId, valorMin, valorMax, pagina, itensPagina, ordem, ordenarPor } = filtro;
+
+    if (isValidArray(ids)) {
+      const validIds = ids.filter((el) => isValidNumber(el));
+
+      if (validIds.length > 0) {
+        qb.andWhere('prod.id IN (:...ids)', { ids: validIds });
+      }
+    }
 
     if (isValidString(nome)) {
       qb.andWhere(`prod.nome ILIKE '%' || :nome || '%'`, { nome });

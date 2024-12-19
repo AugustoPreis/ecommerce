@@ -9,6 +9,9 @@ export class ProdutoListagemFiltroDTO {
   @Transform(({ value }) => number(value))
   itensPagina: number;
 
+  @Transform(({ value }) => value?.split(',').map((splitted: string) => number(splitted)) || [])
+  ids: number[];
+
   @Transform(({ value }) => string(value, { trim: true }))
   nome: string;
 
