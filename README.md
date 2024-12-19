@@ -82,6 +82,11 @@ DB_PASS=
 DB_NAME=
 DB_PORT=
 
+#Comunicação interna entra os serviços
+MS_USUARIOS_URL=
+MS_PRODUTOS_URL=
+MS_CARRINHOS_URL=
+
 #Chave secreta JWT, recomendado gerar uma aleatória
 JWT_SECRET=
 
