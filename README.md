@@ -8,7 +8,7 @@ Este repositório contém o código fonte de um **e-commerce**. O projeto está 
 - **Express**: Framework web para roteamento.
 - **TypeScript**: Superset do JavaScript que adiciona tipagem estática.
 - **TypeORM**: ORM para trabalhar com bancos de dados relacionais.
-- **Docker**: Conteinerização e execução do banco de dados.
+- **Docker**: Conteinerização e execução do projeto.
 - **PostgreSQL**: Banco de dados utilizado.
 
 ---
