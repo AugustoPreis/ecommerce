@@ -4,8 +4,6 @@
 */
 
 module.exports = {
-  //Não é necessário adicionar espaço entre "emoji" e "subject"
-  //o git-cz parece fazer isso automaticamente
   format: '[{type}] {emoji} {subject}',
   list: ['feat', 'fix', 'docs', 'test', 'build', 'perf', 'style', 'refactor', 'chore', 'raw', 'cleanup', 'remove'],
   questions: [
