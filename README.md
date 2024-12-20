@@ -50,16 +50,7 @@ git clone https://github.com/AugustoPreis/ecommerce.git
 cd ecommerce
 ```
 
-### 2. Configurar o Banco de Dados
-
-O banco de dados é iniciado via **docker**, então certifique-se de ter o docker instalado e configurado na sua máquina
-- Na pasta raiz do projeto (`ecommerce`), rode o seguinte comando
-
-```bash
-docker compose up --build
-```
-
-### 3. Configurar Variáveis de Ambiente
+### 2. Configurar Variáveis de Ambiente
 
 - Dentro de cada serviço, crie um arquivo `.env` com base no `.env.example`:
 - O arquivo abaixo possui a configuração de TODOS os valores .env encontrados no projeto
@@ -94,27 +85,22 @@ JWT_SECRET=
 JWT_EXPIRES_IN=
 ```
 
-### 4. Instalar Dependências
+### 3. Iniciar o projeto
+
+O projeto pode ser iniciado via **docker**, então certifique-se de ter o docker instalado e configurado na sua máquina
+- Na pasta raiz do projeto (`ecommerce`), rode o seguinte comando
 
 ```bash
-npm install
-# ou yarn install
+docker compose up --build
 ```
 
-### 5. Executar o Servidor
-
-```bash
-npm start
-# ou yarn start
-```
-
-O servidor irá rodar no `localhost`, na porta informada dentro do arquivo `.env`
+O servidor irá rodar no `localhost`, na porta informada dentro do arquivo `.env` de cada serviço
 
 ---
 
 ## Scripts Disponíveis
 
-- Os scripts podem variar conforme necessidade, consulta o `package.json` de cada microsserviço para mais informações
+- Os scripts podem variar conforme necessidade, consulte o `package.json` de cada microsserviço para mais informações
 - No `package.json`:
 
 | Script         | Descrição                                                      |
